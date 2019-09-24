@@ -7,19 +7,19 @@
  */
 int main(int ac, char **av)
 {
-	FILE *fp;
+	FILE *fp = NULL;
 	size_t len = 0;
 	ssize_t read = 0;
 	char *line = NULL;
 	int linenumber;
-	char **args;
+	char *args;
 
 	fp = fopen(av[1], "r");
 	read = getline(&line, &len, fp);
 	for (linenumber = 1; read != -1; linenumber++)
 	{
-		args = strtow(line, " \t\r\n\v\f");
-		if (strcmp(args[0], "push") == 0)
+		args = strtok(line, " \n");
+		if (strcmp(args, "push") == 0)
 			printf("Success!");
 	}
 	if (read == -1)

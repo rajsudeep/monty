@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+char **strtow(char *str, char *delim);
+int _strpbrk(char *s, char accept);
+int count_words(char *str, char *delim);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
