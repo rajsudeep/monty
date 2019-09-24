@@ -7,24 +7,27 @@
  */
 int main(int ac, char **av)
 {
-	FILE *fp = NULL;
+	FILE *fp;
 	size_t len = 0;
 	ssize_t read = 0;
 	char *line = NULL;
 	int linenumber;
-	char *args;
+	char **args;
 
 	fp = fopen(av[1], "r");
-	read = getline(&line, &len, fp);
-	for (linenumber = 1; read != -1; linenumber++)
+	if (fp == NULL)
 	{
-		args = strtok(line, " \n");
-		if (strcmp(args, "push") == 0)
-			printf("Success!");
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+		exit(EXIT_FAILURE);
 	}
-	if (read == -1)
-		exit(EXIT_FAILURE); /* fprintf ADD */
-
+	for (linenumber = 1; (read = getline(&line, &len, fp)) != -1; linenumber++)
+	{
+		args = strtow(line, " \n");
+		if (strcmp(args[0], "push") == 0)
+			printf("Success!\n");
+		printf("%d\n", linenumber);
+	}
+	free(line);
 	return (EXIT_SUCCESS);
 }
 
