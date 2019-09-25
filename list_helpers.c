@@ -11,6 +11,15 @@
 void push_node(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
+
+	if (!is_num(data.n))	
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", data.l_num);
+		free(data.line);
+		fclose(data.fp);
+		exit(EXIT_FAILURE);
+	}
+
 	stack_t *newNode = malloc(sizeof(stack_t));
 
 	if (newNode == NULL)
@@ -48,12 +57,12 @@ void pall_node(stack_t **stack, unsigned int line_number)
 }
 
 /**
-  * pop_nodes - Calls Function
-  * @stack: Pointer to stack
-  * @line_number: count...
-  * Description: Function that deletes an element from a stack
-  * Return: 0
-  */
+ * pop_nodes - Calls Function
+ * @stack: Pointer to stack
+ * @line_number: count...
+ * Description: Function that deletes an element from a stack
+ * Return: 0
+ */
 //void pop_nodes(stack_t **, unsigned int line_number)
 //{
 //	(void) line_number;
@@ -61,13 +70,13 @@ void pall_node(stack_t **stack, unsigned int line_number)
 //}
 
 /**
-  * pint_node - Calls Function
-  * @stack: Point to stack
-  * @line_number: count...
-  * Description: Function that prints value at the
-  * top of the stack followed by newline
-  * Return: 0
-  */
+ * pint_node - Calls Function
+ * @stack: Point to stack
+ * @line_number: count...
+ * Description: Function that prints value at the
+ * top of the stack followed by newline
+ * Return: 0
+ */
 //void pint_node(stack_t **stack, unsigned int line_number)
 //{
 //	(void) line_number;
@@ -75,12 +84,12 @@ void pall_node(stack_t **stack, unsigned int line_number)
 //}
 
 /**
-  * swap_node - Calls Function
-  * @stack: Point to stack
-  * @line_number: count...
-  * Description: Function that swaps two elements of stack
-  * Return: 0
-  */
+ * swap_node - Calls Function
+ * @stack: Point to stack
+ * @line_number: count...
+ * Description: Function that swaps two elements of stack
+ * Return: 0
+ */
 //void swap_node(stack_t **stack, unsigned int line_number)
 //{
 //	(void) line_number;
