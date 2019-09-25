@@ -38,13 +38,11 @@ void pall_node(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 	int count;
 
-	printf("HELLO");
 	while (*stack)
 	{
 		printf("%d\n", (*stack)->n);
 		(*stack) = (*stack)->next;
 		count++;
-
 	}
 }
 
