@@ -40,12 +40,13 @@ int main(int ac, char **av)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				data.l_num, args[0]);
+			free(data.line), free_stack(data.head), fclose(data.fp);
 			exit(EXIT_FAILURE);
 		}
 		(*f)(&data.head, data.l_num);
 	}
 	free(data.line);
-	free(data.head);
+	free_stack(data.head);
 	fclose(data.fp);
 	return (EXIT_SUCCESS);
 }

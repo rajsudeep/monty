@@ -16,7 +16,7 @@ void push_node(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", data.l_num);
 		free(data.line);
-		free(data.head);
+		free_stack(data.head);
 		fclose(data.fp);
 		exit(EXIT_FAILURE);
 	}
