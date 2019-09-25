@@ -5,41 +5,40 @@
  * @stack: pointer to pointer stack
  * @line_number: count...
  * Description: Function that adds a new node at the top of a stack
+ *
  * Return: 0
  */
 void push_node(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
-	int n = 8;
-
 	stack_t *newNode = malloc(sizeof(stack_t));
 
 	if (newNode == NULL)
 		return;
 
-	newNode->n = n;
+	newNode->n = atoi(data.n);
 	newNode->next = (*stack);
 	newNode->prev = NULL;
 
 	if (*stack)
 		(*stack)->prev = newNode;
 	(*stack = newNode);
-	//printf("%i \n", newNode->n);
 	return;
 }
 
 /**
- * pall_nodes - Calls Function
+ * pall_node - Calls Function
  * @stack: Pointer to stack
  * @line_number: count...
  * Description: Function that prints all elements of stack
  * Return: 0
  */
-void pall_nodes(stack_t **stack, unsigned int line_number)
+void pall_node(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
 	int count;
 
+	printf("HELLO");
 	while (*stack)
 	{
 		printf("%d\n", (*stack)->n);

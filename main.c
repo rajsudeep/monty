@@ -13,6 +13,7 @@ int main(int ac, char **av)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	data.head = NULL;
 	data.line = NULL;
 	data.fp = fopen(av[1], "r");
 	if (data.fp == NULL)
@@ -27,7 +28,7 @@ int main(int ac, char **av)
 			continue;
 		splitstr(data.line, args);
 		data.n = args[1];
-		if ((f = get_op(NULL)) == NULL)
+		if ((f = get_op(args[0])) == NULL)
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				data.l_num, args[0]);
 	}

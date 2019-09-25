@@ -62,6 +62,10 @@ int splitstr(char *line, char *tokens[]);
 int only_delims(char *line);
 int _cmpstrandlen(char *s1, char *s2);
 
+
+/* op functions */
 void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number);
+void push_node(stack_t **stack, unsigned int line_number);
+void pall_node(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
