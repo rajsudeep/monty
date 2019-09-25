@@ -29,8 +29,12 @@ int main(int ac, char **av)
 		splitstr(data.line, args);
 		data.n = args[1];
 		if ((f = get_op(args[0])) == NULL)
+		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				data.l_num, args[0]);
+			exit(EXIT_FAILURE);
+		}
+		(*f)(&data.head, data.l_num);
 	}
 	free(data.line);
 	fclose(data.fp);

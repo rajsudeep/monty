@@ -36,13 +36,13 @@ void push_node(stack_t **stack, unsigned int line_number)
 void pall_node(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
+	stack_t *tmp = *stack;
 	int count;
 
-	printf("HELLO");
-	while (*stack)
+	while (tmp)
 	{
-		printf("%d\n", (*stack)->n);
-		(*stack) = (*stack)->next;
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
 		count++;
 
 	}
