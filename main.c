@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * main - interpret lines of a bytecode file
+ * @ac: number of command line input arguments
+ * @av: list of arguments
+ *
+ * Return: EXIT_SUCCESS on success else EXIT_FAILURE
+ */
 int main(int ac, char **av)
 {
 	size_t len = 0;
@@ -28,7 +35,8 @@ int main(int ac, char **av)
 			continue;
 		splitstr(data.line, args);
 		data.n = args[1];
-		if ((f = get_op(args[0])) == NULL)
+		f = get_op(args[0]);
+		if (f == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n",
 				data.l_num, args[0]);
