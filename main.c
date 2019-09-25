@@ -45,6 +45,7 @@ int main(int ac, char **av)
 		(*f)(&data.head, data.l_num);
 	}
 	free(data.line);
+	free(data.head);
 	fclose(data.fp);
 	return (EXIT_SUCCESS);
 }
