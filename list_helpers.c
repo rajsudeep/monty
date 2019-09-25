@@ -44,7 +44,6 @@ void pall_node(stack_t **stack, unsigned int line_number)
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 		count++;
-
 	}
 }
 
