@@ -1,10 +1,45 @@
 #include "monty.h"
 
+int splitstr(char *line, char *tokens[])
+{
+        int i;
+        char *token;
+
+        token = strtok(line, " \n");
+        for (i = 0; token != NULL; i++) {
+                tokens[i] = token;
+                token = strtok(NULL, " \n");
+        }
+        tokens[i] = NULL;
+        return (0);
+}
+
 /**
+ * only_delims - Check if line consists of only delimiters
+ * @line: The line to check
  *
- *
- *
+ * Return: 1 if true, 0 if false
  */
+int only_delims(char *line)
+{
+	int i, j, delim_found;
+	char delim[] = " \t\r\n\v\f";
+
+	for (i = 0; line[i] != '\0'; i++)
+	{
+		delim_found = 0;
+		for (j = 0; delim[j] != '\0'; j++)
+		{
+			if (line[i] == delim[j])
+				delim_found = 1;
+		}
+		if (!delim_found)
+			return (0);
+	}
+
+	return (1);
+}
+
 int main(int ac, char **av)
 {
 	FILE *fp;
@@ -12,8 +47,13 @@ int main(int ac, char **av)
 	ssize_t read = 0;
 	char *line = NULL;
 	int linenumber;
-	char **args;
+	char *args[2];
 
+	if (ac != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	fp = fopen(av[1], "r");
 	if (fp == NULL)
 	{
@@ -22,89 +62,14 @@ int main(int ac, char **av)
 	}
 	for (linenumber = 1; (read = getline(&line, &len, fp)) != -1; linenumber++)
 	{
-		args = strtow(line, " \n");
+		if (only_delims(line))
+			continue;
+		splitstr(line, args);
 		if (strcmp(args[0], "push") == 0)
 			printf("Success!\n");
 		printf("%d\n", linenumber);
 	}
 	free(line);
+	fclose(fp);
 	return (EXIT_SUCCESS);
-}
-
-char **strtow(char *str, char *delim)
-{
-	int i = 0, j = 0, k = 0, wordcount = 0, strlength = 0, tmplength = 0;
-	char **words;
-
-	if (str == NULL || strlen(str) == 0)
-		return (NULL);
-	strlength = strlen(str);
-	wordcount = count_words(str, delim);
-	if (wordcount == 0)
-		return (NULL);
-	words = malloc(sizeof(char *) * (wordcount + 1));
-	if (words == NULL)
-		return (NULL);
-	for (i = 0; i < strlength; i++)
-	{
-		if (_strpbrk(delim, str[i]) == 0)
-		{
-			for (k = i, tmplength = 0; str[k] != '\0' &&
-				     _strpbrk(delim, str[k]) == 0; k++)
-				tmplength++;
-			words[j] = malloc(sizeof(char) * (tmplength + 1));
-			if (words[j] == NULL)
-			{
-				free(words);
-				for (k = 0; k <= j; k++)
-					free(words[k]);
-				return (NULL);
-			}
-			k = 0;
-			while (str[i] != '\0' && _strpbrk(delim, str[i]) == 0)
-			{
-				words[j][k] = str[i];
-				i++;
-				k++;
-			}
-			words[j][k] = '\0';
-			j++;
-		}
-	}
-	words[j] = NULL;
-	return (words);
-}
-
-int _strpbrk(char *s, char accept)
-{
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		if (s[i] == accept)
-			return (1);
-	}
-
-	return (0);
-}
-
-int count_words(char *str, char *delim)
-{
-	int i;
-	int count = 0, word = 0;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (_strpbrk(delim, str[i]) == 0 && word == 0)
-		{
-			count++;
-			word = 1;
-		}
-		else if (_strpbrk(delim, str[i]) == 1)
-		{
-			word = 0;
-		}
-	}
-
-	return (count);
 }
