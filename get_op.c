@@ -1,9 +1,10 @@
 #include "monty.h"
 
 /**
+ * get_op - search for op function
+ * @opcode: string that may match an op function
  *
- *
- *
+ * Return: If found, pointer to function else NULL
  */
 void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number)
 {

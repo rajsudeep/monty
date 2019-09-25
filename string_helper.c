@@ -9,16 +9,17 @@
  */
 int splitstr(char *line, char *tokens[])
 {
-        int i;
-        char *token;
+	int i;
+	char *token;
 
-        token = strtok(line, " \n");
-        for (i = 0; token != NULL; i++) {
-                tokens[i] = token;
-                token = strtok(NULL, " \n\t");
-        }
-        tokens[i] = NULL;
-        return (0);
+	token = strtok(line, " \n");
+	for (i = 0; token != NULL; i++)
+	{
+		tokens[i] = token;
+		token = strtok(NULL, " \n\t");
+	}
+	tokens[i] = NULL;
+	return (0);
 }
 
 /**
