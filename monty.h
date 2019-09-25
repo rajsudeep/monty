@@ -1,6 +1,5 @@
 #ifndef MONTY_H
 #define MONTY_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,10 +15,33 @@
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
 } stack_t;
+
+/**
+ * struct data_s - contains data
+ * @n: string equivalent of a potential op input
+ * @line: line interpreted and read from file
+ * @fp: file to be read
+ * @l_num: count of number of lines read
+ * @head: global stack
+ *
+ * Description: contains information to use throughout
+ * interpretation instructions
+ */
+typedef struct data_s
+{
+	char *n;
+	char *line;
+	FILE *fp;
+	unsigned int l_num;
+	stack_t *head;
+} data_t;
+
+data_t data;
+
 
 /**
  * struct instruction_s - opcode and its function
@@ -35,8 +57,11 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 /* string helper functions */
+int splitstr(char *line, char *tokens[]);
+int only_delims(char *line);
 int _cmpstrandlen(char *s1, char *s2);
+
+void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
