@@ -61,7 +61,7 @@ typedef struct instruction_s
 int splitstr(char *line, char *tokens[]);
 int only_delims(char *line);
 int _cmpstrandlen(char *s1, char *s2);
-
+int is_num(char *s);
 
 /* op functions */
 void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number);

@@ -62,3 +62,32 @@ int _cmpstrandlen(char *s1, char *s2)
 	else
 		return (1);
 }
+
+/**
+ * is_num - check the characters of a string is a number
+ * @str: string to test
+ *
+ * Return: If successful 1, else 0 on failure
+ */
+int is_num(char *s)
+{
+	int i = 0;
+
+	if (s == NULL || s[0] == '\0')
+		return (0);
+	if (s[i] == '-')
+	{
+		if (s[i + 1] == '-')
+			return (0);
+		if (s[i + 1] == '\0')
+			return (0);
+		i++;
+	}
+	while (s[i] != '\0')
+	{
+		if (isdigit(s[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}

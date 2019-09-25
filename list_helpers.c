@@ -45,3 +45,15 @@ void pall_node(stack_t **stack, unsigned int line_number)
 		count++;
 	}
 }
+
+/**
+ * free_stack - free a stack
+ * @head: doubly linked list represented as a stack
+ */
+void free_stack(stack_t *head)
+{
+	if (head == NULL)
+		return;
+	free_stack(head->next);
+	free(head);
+}
