@@ -10,13 +10,13 @@
 int splitstr(char *line, char *tokens[])
 {
 	int i;
-	char *token, *saveptr;
+	char *token;
 
-	token = strtok_r(line, " \n\t\r\v\f", &saveptr);
+	token = strtok(line, " \n\t\r\v\f");
 	for (i = 0; token != NULL && i < 2; i++)
 	{
 		tokens[i] = token;
-		token = strtok_r(NULL, " \n\t\r\v\f", &saveptr);
+		token = strtok(NULL, " \n\t\r\v\f");
 	}
 	return (0);
 }
