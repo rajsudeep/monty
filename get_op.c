@@ -12,6 +12,7 @@ void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"push", push_node},
 		{"pall", pall_node},
 		{"pop", pop_node},
+		{"pint", pint_node},
 		{"add", add_node},
 		{"swap", swap_node},
 		{"nop", nop_nop},
