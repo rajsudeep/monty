@@ -99,11 +99,9 @@ void pop_node(stack_t **stack, unsigned int line_number)
 }
 
 /**
- *
- *
- *
- *
- *
+ * pint_node - Prints head of the function
+ * @stack: Pointer to stack
+ * @line_number: count...
  */
 void pint_node(stack_t **stack, unsigned int line_number)
 {
@@ -111,7 +109,9 @@ void pint_node(stack_t **stack, unsigned int line_number)
 
 	if (!(*stack))
 	{
-		fprintf(stderr, "L%u: usage: can't pint, stack empty\n", data.l_num);
+		fprintf(stderr, "L%u: usage: can't pint, stack empty\n",
+			data.l_num);
+		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack) != NULL)
