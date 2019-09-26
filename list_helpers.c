@@ -72,7 +72,7 @@ void free_stack(stack_t *head)
 }
 
 /**
- * nop_nop does nothing
+ * nop_nop - does nothing
  * @stack: pointer to stack
  * @line_number: count of number of commands
  */
