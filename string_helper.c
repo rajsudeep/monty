@@ -13,6 +13,11 @@ int splitstr(char *line, char *tokens[])
 	char *token;
 
 	token = strtok(line, " \n");
+	if (token[0] == '#')
+	{
+		nop_nop(&data.head, data.l_num);
+		return (1);
+	}
 	for (i = 0; token != NULL; i++)
 	{
 		tokens[i] = token;

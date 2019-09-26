@@ -32,7 +32,8 @@ int main(int ac, char **av)
 	{
 		if (only_delims(data.line))
 			continue;
-		splitstr(data.line, args);
+		if (splitstr(data.line, args) == 1)
+			continue;
 		data.n = args[1];
 		f = get_op(args[0]);
 		if (f == NULL)
