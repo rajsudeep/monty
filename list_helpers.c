@@ -5,8 +5,6 @@
  * @stack: pointer to stack
  * @line_number: count of number of commands
  * Description: Function that adds a new node at the top of a stack
- *
- * Return: 0
  */
 void push_node(stack_t **stack, unsigned int line_number)
 {
@@ -42,7 +40,6 @@ void push_node(stack_t **stack, unsigned int line_number)
  * @stack: pointer to stack
  * @line_number: count of number of commands
  * Description: Function that prints all elements of stack
- * Return: 0
  */
 void pall_node(stack_t **stack, unsigned int line_number)
 {
@@ -71,54 +68,32 @@ void free_stack(stack_t *head)
 	free(head);
 }
 
-void swap_node(stack_t **stack, unsigned int line_number)
-{
-	int head_n;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%u: can't add, stack too short\n",
-				line_number);
-		free(data.line), free_stack(data.head), fclose(data.fp);
-		exit(EXIT_FAILURE);
-	}
-	head_n = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = head_n;
-}
-
-/**
- * nop_nop - does nothing
- * @stack: pointer to stack
- * @line_number: count of number of commands
- */
-void nop_nop(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	(void) line_number;
-}
-
 /**
  * pop_node - Calls Function
  * @stack: Pointer to stack
  * @line_number: count...
  * Description: Function deletes an element of the stack
- * Return: 0
  */
-
 void pop_node(stack_t **stack, unsigned int line_number)
 {
-	(void) line_number;
 	stack_t *tmp = *stack;
+	(void) line_number;
 
 	if (!tmp)
 	{
-		fprintf(stderr, "L%u: usage: can't pop an empty stack\n", data.l_num);
+		fprintf(stderr, "L%u: usage: can't pop an empty stack\n",
+			data.l_num);
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
+	}
+	if (tmp->next == NULL)
+	{
+		free(tmp);
+		*stack = NULL;
+		return;
 	}
 	(*stack) = tmp->next;
 	(*stack)->next = tmp->next->next;
 	(*stack)->prev = NULL;
 	free(tmp);
-}	
+}
