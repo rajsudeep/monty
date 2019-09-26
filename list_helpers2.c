@@ -11,7 +11,7 @@ void swap_node(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n",
+		fprintf(stderr, "L%u: can't swap, stack too short\n",
 			line_number);
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
