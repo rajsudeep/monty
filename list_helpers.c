@@ -81,7 +81,7 @@ void pop_node(stack_t **stack, unsigned int line_number)
 
 	if (!tmp)
 	{
-		fprintf(stderr, "L%u: usage: can't pop an empty stack\n",
+		fprintf(stderr, "L%u: can't pop an empty stack\n",
 				data.l_num);
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
