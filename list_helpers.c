@@ -82,7 +82,7 @@ void pop_node(stack_t **stack, unsigned int line_number)
 	if (!tmp)
 	{
 		fprintf(stderr, "L%u: usage: can't pop an empty stack\n",
-			data.l_num);
+				data.l_num);
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
 	}
@@ -96,4 +96,24 @@ void pop_node(stack_t **stack, unsigned int line_number)
 	(*stack)->next = tmp->next->next;
 	(*stack)->prev = NULL;
 	free(tmp);
+}
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+void pint_node(stack_t **stack, unsigned int line_number)
+{
+	(void) line_number;
+
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%u: usage: can't pint, stack empty\n", data.l_num);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack) != NULL)
+		printf("%d\n", (*stack)->n);
 }
