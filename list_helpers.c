@@ -109,7 +109,7 @@ void pint_node(stack_t **stack, unsigned int line_number)
 
 	if (!(*stack))
 	{
-		fprintf(stderr, "L%u: usage: can't pint, stack empty\n",
+		fprintf(stderr, "L%u: can't pint, stack empty\n",
 			data.l_num);
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
