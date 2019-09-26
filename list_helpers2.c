@@ -39,8 +39,7 @@ void add_node(stack_t **stack, unsigned int line_number)
 	}
 	n_sum = (*stack)->n;
 	pop_node(stack, line_number);
-	n_sum += (*stack)->n;
-	(*stack)->n = n_sum;
+	(*stack)->n += n_sum;
 }
 
 /**
