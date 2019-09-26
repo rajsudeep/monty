@@ -72,6 +72,7 @@ void swap_node(stack_t **stack, unsigned int line_number);
 void add_node(stack_t **stack, unsigned int line_number);
 void nop_nop(stack_t **stack, unsigned int line_number);
 void pop_node(stack_t **stack, unsigned int line_number);
+void sub_node(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
 
 #endif /* MONTY_H */
