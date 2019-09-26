@@ -12,11 +12,11 @@ int splitstr(char *line, char *tokens[])
 	int i;
 	char *token;
 
-	token = strtok(line, " \n");
+	token = strtok(line, " \n\t\r\v\f");
 	for (i = 0; token != NULL; i++)
 	{
 		tokens[i] = token;
-		token = strtok(NULL, " \n\t");
+		token = strtok(NULL, " \n\t\r\v\f");
 	}
 	tokens[i] = NULL;
 	return (0);
