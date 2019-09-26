@@ -68,6 +68,7 @@ int is_num(char *s);
 void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number);
 void push_node(stack_t **stack, unsigned int line_number);
 void pall_node(stack_t **stack, unsigned int line_number);
+void swap_node(stack_t **stack, unsigned int line_number);
 void nop_nop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
 
