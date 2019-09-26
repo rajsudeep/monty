@@ -5,7 +5,7 @@
  * @line: string to split
  * @tokens: buffer to place the words into
  *
- * Return: On success 0
+ * Return: On success 0 else 1 for failure
  */
 int splitstr(char *line, char *tokens[])
 {
