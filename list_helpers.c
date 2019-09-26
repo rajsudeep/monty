@@ -2,8 +2,8 @@
 
 /**
  * *push_node - Calls Function
- * @stack: pointer to pointer stack
- * @line_number: count...
+ * @stack: pointer to stack
+ * @line_number: count of number of commands
  * Description: Function that adds a new node at the top of a stack
  *
  * Return: 0
@@ -39,8 +39,8 @@ void push_node(stack_t **stack, unsigned int line_number)
 
 /**
  * pall_node - Calls Function
- * @stack: Pointer to stack
- * @line_number: count...
+ * @stack: pointer to stack
+ * @line_number: count of number of commands
  * Description: Function that prints all elements of stack
  * Return: 0
  */
@@ -69,4 +69,15 @@ void free_stack(stack_t *head)
 		return;
 	free_stack(head->next);
 	free(head);
+}
+
+/**
+ * nop_nop does nothing
+ * @stack: pointer to stack
+ * @line_number: count of number of commands
+ */
+void nop_nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
 }
