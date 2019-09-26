@@ -17,6 +17,7 @@ void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"swap", swap_node},
 		{"nop", nop_nop},
 		{"sub", sub_node},
+		{"mul", mul_node},
 		{NULL, NULL}
 	};
 	int i;

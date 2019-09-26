@@ -73,3 +73,24 @@ void sub_node(stack_t **stack, unsigned int line_number)
 	pop_node(stack, line_number);
 	(*stack)->n -= n_sub;
 }
+
+/**
+ * mul_node - replace first two nodes with mul of the two
+ * @stack: pointer to stack
+ * @line_number: count of number of commands
+ */
+void mul_node(stack_t **stack, unsigned int line_number)
+{
+	int n_mul = 0;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't mul, stack too short\n",
+			line_number);
+		free(data.line), free_stack(data.head), fclose(data.fp);
+		exit(EXIT_FAILURE);
+	}
+	n_mul = (*stack)->n;
+	pop_node(stack, line_number);
+	(*stack)->n *= n_mul;
+}
