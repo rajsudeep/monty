@@ -12,18 +12,17 @@ int splitstr(char *line, char *tokens[])
 	int i;
 	char *token;
 
-	token = strtok(line, " \n");
+	token = strtok(line, " \n\t");
 	if (token[0] == '#')
 	{
 		nop_nop(&data.head, data.l_num);
 		return (1);
 	}
-	for (i = 0; token != NULL; i++)
+	for (i = 0; token != NULL && i < 2; i++)
 	{
 		tokens[i] = token;
 		token = strtok(NULL, " \n\t");
 	}
-	tokens[i] = NULL;
 	return (0);
 }
 
