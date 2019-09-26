@@ -16,6 +16,13 @@ void div_node(stack_t **stack, unsigned int line_number)
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
 	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n",
+				line_number);
+		free(data.line), free_stack(data.head), fclose(data.fp);
+		exit(EXIT_FAILURE);
+	}
 	n_div = (*stack)->n;
 	pop_node(stack, line_number);
 	(*stack)->n /= n_div;
