@@ -10,6 +10,7 @@
  */
 void push_node(stack_t **stack, unsigned int line_number)
 {
+	stack_t *newNode;
 	(void) line_number;
 
 	if (!is_num(data.n))
@@ -21,7 +22,7 @@ void push_node(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	stack_t *newNode = malloc(sizeof(stack_t));
+	newNode = malloc(sizeof(stack_t));
 
 	if (newNode == NULL)
 		return;
@@ -44,10 +45,11 @@ void push_node(stack_t **stack, unsigned int line_number)
  */
 void pall_node(stack_t **stack, unsigned int line_number)
 {
-	(void) line_number;
-	stack_t *tmp = *stack;
+	stack_t *tmp;
 	int count;
+	(void) line_number;
 
+	tmp = *stack;
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);

@@ -11,7 +11,6 @@ int main(int ac, char **av)
 {
 	size_t len = 0;
 	ssize_t read = 0;
-	unsigned int i;
 	void (*f)(stack_t **stack, unsigned int line_number);
 	char *args[2];
 
