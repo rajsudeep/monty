@@ -16,16 +16,17 @@ void push_node(stack_t **stack, unsigned int line_number)
 	if (!is_num(data.n))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", data.l_num);
-		free(data.line);
-		free_stack(data.head);
-		fclose(data.fp);
+		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
 	}
 
 	newNode = malloc(sizeof(stack_t));
-
 	if (newNode == NULL)
-		return;
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free(data.line), free_stack(data.head), fclose(data.fp);
+		exit(EXIT_FAILURE);
+	}
 
 	newNode->n = atoi(data.n);
 	newNode->next = (*stack);
