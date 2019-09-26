@@ -53,21 +53,6 @@ int only_delims(char *line)
 }
 
 /**
- * _cmpstrandlen - compares two strings and compares the length of the strings
- * @s1: first string to compare
- * @s2: second string to compare
- *
- * Return: If strings are the "same" return 0 else 1
- */
-int _cmpstrandlen(char *s1, char *s2)
-{
-	if (!strcmp(s1, s2) && (strlen(s1) == strlen(s2)))
-		return (0);
-	else
-		return (1);
-}
-
-/**
  * is_num - check if the characters of a string is a number
  * @s: string to test
  *
@@ -79,12 +64,9 @@ int is_num(char *s)
 
 	if (s == NULL || s[0] == '\0')
 		return (0);
-	if (s[i] == '-')
-	{
+	if (s[i++] == '-')
 		if (s[i + 1] == '-' || s[i + 1] == '\0')
 			return (0);
-		i++;
-	}
 	for (; s[i] != '\0'; i++)
 		if (isdigit(s[i]) == 0)
 			return (0);
