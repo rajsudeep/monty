@@ -44,7 +44,7 @@ int main(int ac, char **av)
 			exit(EXIT_FAILURE);
 		}
 		(*f)(&data.head, data.l_num);
-		clear_strings(args);
+		reset_args(args);
 	}
 	free(data.line), free_stack(data.head), fclose(data.fp);
 	return (EXIT_SUCCESS);

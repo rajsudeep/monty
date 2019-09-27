@@ -3,7 +3,7 @@
 /**
  * splitstr - splits string into corresponding words
  * @line: string to split
- * @tokens: buffer to place the words into
+ * @args: buffer to place the words into
  *
  * Return: On success 0 else 1 for failure
  */
@@ -28,14 +28,14 @@ int splitstr(char *line, char *tokens[])
 
 /**
  * clear_strings - Reset strings in an array
- * @tokens: array of strings
+ * @args: array of strings
  */
-void clear_strings(char *tokens[])
+void reset_args(char *args[])
 {
 	int i;
 
-	for (i = 0; tokens[i]; i++)
-		tokens[i][0] = '\0';
+	for (i = 0; args[i]; i++)
+		args[i][0] = '\0';
 }
 
 /**
