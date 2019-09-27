@@ -27,6 +27,18 @@ int splitstr(char *line, char *tokens[])
 }
 
 /**
+ * clear_strings - Reset strings in an array
+ * @tokens: array of strings
+ */
+void clear_strings(char *tokens[])
+{
+	int i;
+
+	for (i = 0; tokens[i]; i++)
+		tokens[i][0] = '\0';
+}
+
+/**
  * only_delims - Check if line consists of only delimiters
  * @line: The line to check
  *
