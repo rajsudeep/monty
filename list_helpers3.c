@@ -57,7 +57,7 @@ void mod_node(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mod_node - mode the first two nodes
+ * pchar_node - mode the first two nodes
  * @stack: pointer to stack
  * @line_number: count of number of commands
  */
@@ -74,8 +74,8 @@ void pchar_node(stack_t **stack, unsigned int line_number)
 	}
 	n_pchar = (*stack)->n;
 
-	if ((n_pchar >= 65 && n_pchar <= 90) || (n_pchar >= 97 && n_pchar <= 122))
-			printf("%c\n", n_pchar);
+	if (n_pchar >= 32 && n_pchar <= 127)
+		printf("%c\n", n_pchar);
 	else
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n",
