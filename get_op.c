@@ -20,6 +20,7 @@ void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"mul", mul_node},
 		{"div", div_node},
 		{"mod", mod_node},
+		{"pchar", pchar_node},
 		{NULL, NULL}
 	};
 	int i;
