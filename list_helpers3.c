@@ -63,8 +63,6 @@ void mod_node(stack_t **stack, unsigned int line_number)
  */
 void pchar_node(stack_t **stack, unsigned int line_number)
 {
-	char n_pchar;
-
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n",
@@ -72,14 +70,11 @@ void pchar_node(stack_t **stack, unsigned int line_number)
 		free(data.line), free_stack(data.head), fclose(data.fp);
 		exit(EXIT_FAILURE);
 	}
-	n_pchar = (*stack)->n;
-
-	if ((*stack)->n > 32 && (*stack)->n < 127)
-		printf("%c\n", n_pchar);
-	else
+	if ((*stack)->n < 32 || (*stack)->n > 127)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n",
 				line_number);
 		free(data.line), free_stack(data.head), fclose(data.fp);
 	}
+	printf("%c\n", (*stack)->n);
 }
