@@ -74,7 +74,7 @@ void pchar_node(stack_t **stack, unsigned int line_number)
 	}
 	n_pchar = (*stack)->n;
 
-	if (n_pchar >= 32 && n_pchar <= 127)
+	if (n_pchar >= 0 && n_pchar <= 127)
 		printf("%c\n", n_pchar);
 	else
 	{
