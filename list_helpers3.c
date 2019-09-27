@@ -63,7 +63,7 @@ void mod_node(stack_t **stack, unsigned int line_number)
  */
 void pchar_node(stack_t **stack, unsigned int line_number)
 {
-	int n_pchar;
+	char n_pchar;
 
 	if (*stack == NULL)
 	{
@@ -74,7 +74,7 @@ void pchar_node(stack_t **stack, unsigned int line_number)
 	}
 	n_pchar = (*stack)->n;
 
-	if (n_pchar >= 0 && n_pchar <= 127)
+	if ((*stack)->n > 32 && (*stack)->n < 127)
 		printf("%c\n", n_pchar);
 	else
 	{
